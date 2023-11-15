@@ -1,0 +1,141 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    @*    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark" style="background-color:darkgoldenrod">
+            <div class="container">
+                <a @Url.Action("Logo", "Index")>
+                    <img src="https://imgs.search.brave.com/YY2WuoB5q8flVs_Bwj5m86f3_xE_iiKVfzevk8uAMkI/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9jbGlw/YXJ0LWxpYnJhcnku/Y29tL2ltYWdlX2dh/bGxlcnkyL0NhcnQt/UE5HLVBpYy5wbmc" style="height:50px;width:50px" alt="" />
+                </a>
+
+
+                <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li>@Html.ActionLink("Home", "Index", "User", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("About Us", "About", "User", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>
+                            @if (Session["u_id"] != null)
+                            {
+                                @Html.ActionLink("Post An Ad", "CreateAd", "User", new { area = "" }, new { @class = "nav-link" })
+                            }
+                        </li>
+
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            @if (Session["u_id"] == null)
+                            {
+                                @Html.ActionLink("Login", "login", "User", null, new { @class = "nav-link" })
+                            }
+
+                        </li>
+
+                        <li>
+                            @if (Session["u_id"] == null)
+                            {
+                                @Html.ActionLink("Register", "SigUp", "User", null, new { @class = "nav-link" })
+                            }
+                            else
+                            {
+                                @Html.ActionLink("Sign Out", "SigOut", "User", null, new { @class = "nav-link" })
+                            }
+                        </li>
+                        <li>
+
+                        @Html.ActionLink("Admin", "Login", "Admin",null, new { @class = "nav-link" })
+
+                            </li>
+                    </ul>
+                </div>
+
+            </div>
+        </nav>*@
+
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+        <div class="container">
+            <a @Url.Action("Logo", "Index")>
+                <img src="https://imgs.search.brave.com/YY2WuoB5q8flVs_Bwj5m86f3_xE_iiKVfzevk8uAMkI/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9jbGlw/YXJ0LWxpYnJhcnku/Y29tL2ltYWdlX2dh/bGxlcnkyL0NhcnQt/UE5HLVBpYy5wbmc" style="height:50px;width:50px" alt="" />
+            </a>
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+                    <li>@Html.ActionLink("Home", "Index", "User", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("About Us", "About", "User", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>
+                        @if (Session["u_id"] != null)
+                        {
+                            @Html.ActionLink("Post An Ad", "CreateAd", "User", new { area = "" }, new { @class = "nav-link" })
+                        }
+                    </li>
+                    
+
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        @if (Session["u_id"] == null)
+                        {
+                            @Html.ActionLink("Login", "login", "User", null, new { @class = "nav-link" })
+                        }
+
+                    </li>
+
+                    <li>
+                        @if (Session["u_id"] == null)
+                        {
+                            @Html.ActionLink("Register", "SigUp", "User", null, new { @class = "nav-link" })
+                        }
+                        else
+                        {
+                            @Html.ActionLink("Sign Out", "SigOut", "User", null, new { @class = "nav-link" })
+                        }
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    @RenderBody()
+
+    <footer class="footer text-white"
+            style="background-color: rgb(52, 58, 64);">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 mt-4">
+                    <h4>Follow Us</h4>
+
+                    <a href="#" class="btn btn-primary">
+                        <i class="fab fa-facebook-f"></i>
+                    </a> <a href="#" class="btn btn-info">
+                        <i class="fab fa-twitter"></i>
+                    </a> <a href="#" class="btn btn-danger">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+                <div class="col-md-6 mt-3">
+                    <h4>Contact Information</h4>
+
+                    <p>Email: emarketing@gmail.com</p>
+                    <p>Mobile: (+91) 9876-321-012</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

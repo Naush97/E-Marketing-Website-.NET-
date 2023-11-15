@@ -1,0 +1,78 @@
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<emarketing_project.Models.tbl_product>
+@{
+    ViewBag.Title = "Ads";
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>View Ads</title>
+    <link href="~/Content/pagination.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    
+        <div class="row">
+            <div class="col-lg-12" style="height:100px; border:1px solid solid;">
+                @*<div  background-image: url('../../content/img/ban.png');background-repeat:no-repeat;width:100% "></div>
+            </div>*@
+                <div>
+                    <img src="~/Content/img/BAN.png" style="height: 100px;width:100%" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-2 col-md-2">
+                <img src="~/Content/img/ad1.png" class="img img-responsive" style="width:100%;height:100%" />
+            </div>
+
+            <div class="col-lg-8 col-md-8">
+                @using (Html.BeginForm("Ads", "User"))
+                {
+                    <div class="navbar-form">
+                        <div class="form-group">
+                            <input type="text" placeholder="Search" name="search" id="search" />
+                            <button type="submit" class="btn btn-success">Search</button>
+                        </div>
+
+                    </div>
+                }
+                <div class="row" style="margin-bottom:40px">
+                    @{ int x = 0;}
+                    @if (Model != null)
+                    {
+                        foreach (var item in Model)
+                        {
+                            x++;
+                            <div class="col-lg-4 col-md-4" style="height:200px;margin-top:100px">
+                                <img src="@Url.Content(item.pro_image)" style="height:100%;width:100%;border-radius:50px 50px 50px 50px" />
+                                <h4 style="color:brown;font-family:'Arial Rounded MT';text-align:center">@Html.ActionLink(@item.pro_name, "ViewAds", new { id = item.pro_id })</h4>
+
+                            </div>
+                        }
+                    }
+
+                </div>
+                <h4>@x Results Found </h4>
+            </div>
+            <div class="col-lg-2 col-md-2">
+                <img src="~/Content/img/ad2.png" class="img img-responsive" style="width:100%;height:100%" />
+            </div>
+        </div>
+
+        <div id="container" style="margin-left:20px">
+            <p></p>
+            <p></p>
+            <div class="pagination" style="margin-left:400px">
+                Page @(Model.PageCount<Model.PageNumber?0: Model.PageNumber)
+                of @Model.PageCount @Html.PagedListPager(Model, page => Url.Action("Ads", new { page }))
+            </div>
+        </div>
+    
+</body>
+</html>
+

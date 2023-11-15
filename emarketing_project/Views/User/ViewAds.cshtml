@@ -1,0 +1,57 @@
+﻿@model emarketing_project.Models.Adviewmodel
+@{
+    ViewBag.Title = "ViewAds";
+}
+
+<div class="row">
+    <div class="col-lg-12" style="height:100px; border:1px solid solid;">
+       
+        <div>
+            <img src="~/Content/img/BAN.png" style="height: 100px;width:100%" />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-2 col-md-2">
+
+        <img src="~/Content/img/ad1.png" class="img img-responsive" style="width:100%;height:100%" />
+    </div>
+
+    <div class="col-lg-8 col-md-8">
+        <div>
+            <h1>@Model.pro_name | <small>AD-ID :@Model.pro_id</small></h1>
+        </div>
+        <img src="@Url.Content(@Model.pro_image)" style="height:450px;width:700px"/>
+        <div>
+            <h2>Description</h2>
+            <p>@Model.pro_des</p>
+        </div>
+        <table>
+           
+        <tr>
+            <td>Price</td><td>@Model.pro_price </td>
+        </tr>
+        <tr>
+            <td>Category :</td><td>@Model.cat_name </td>
+        </tr>
+        <tr>
+            <td>Posted By:</td><td>@Model.u_name &nbsp;&nbsp;<img src="@Url.Content(Model.u_image)" style="height:40px;width:40px;border-bottom-left-radius:8px;border-top-right-radius:8px" /></td>
+        </tr>
+        <tr>
+            <td>Contact :</td><td>@Model.u_contact </td>
+        </tr>
+            
+            @*<tr><td colspan="2">
+                @if (Convert.ToInt32(Session["u_id"])==Convert.ToInt32(Model.pro_fk_user))
+            {
+                   @Html.ActionLink("Close Ad", "DeleteAd", new {id=Model.pro_id})
+                }
+                </td>
+            </tr>*@
+            </table>
+    </div>
+
+    <div class="col-lg-2 col-md-2">
+        <img src="~/Content/img/ad2.png" class="img img-responsive" style="width:100%;height:100%" />
+    </div>
+</div>

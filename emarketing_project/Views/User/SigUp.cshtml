@@ -1,0 +1,124 @@
+﻿@model emarketing_project.Models.tbl_user
+@{
+    ViewBag.Title = "Create";
+}
+
+
+<style>
+    #box {
+        border: 1px solid black;
+        height: 1000px;
+    }
+
+    #main-div {
+        height: 100%;
+        background-image: url('https://imgs.search.brave.com/sQ0Ep73dTTQCbfoqIsBoxT7cPf0w3bX80innlk2fOW0/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/ZnJlZS1waG90by9h/cnJhbmdlbWVudC1i/bGFjay1mcmlkYXkt/c2hvcHBpbmctY2Fy/dHMtd2l0aC1jb3B5/LXNwYWNlXzIzLTIx/NDg2NjcwNDcuanBn/P3NpemU9NjI2JmV4/dD1qcGc');
+        background-size: 100% 1000px;
+    }
+
+    .insidebox {
+        border: 1px solid black;
+        margin: 10% auto 10% auto;
+        max-width: 500px;
+        min-width: 200px;
+        padding-left: 60px;
+        padding-right: 60px;
+        border-radius: 10px;
+        background-color: whitesmoke;
+    }
+
+    div h1 {
+        text-align: center;
+    }
+
+    p#para {
+        text-align: center;
+        font-size: 14px;
+    }
+</style>
+
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+
+
+
+<script src="js/bootstrap.min.js"></script>
+<script src="http://code.jquery.com/jquery.js"></script>
+<div id="main-div">
+    <div id="box" class="img-responsive">
+        @using (@Html.BeginForm("SigUp", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="insidebox" style="background-color:burlywood">
+                <div> <h1>Create Account</h1></div>
+
+
+
+
+                <div class="form-group" >
+                    <div class="input-group mt-2">
+
+                        @Html.TextBoxFor(x => x.u_name, new { @class = "form-control", @placeholder = "Enter full name" })
+
+                    </div>
+                    <span style="color:red">   @Html.ValidationMessageFor(x => x.u_name) </span>
+
+                </div>
+
+                <div class="form-group">
+                    <div class="input-group mt-2">
+
+                        @Html.TextBoxFor(x => x.u_email, new { @class = "form-control", @placeholder = "Enter email" })
+
+                    </div>
+                    <span style="color:red">   @Html.ValidationMessageFor(x => x.u_email) </span>
+
+                </div>
+                <div class="form-group">
+                    <div class="input-group mt-2">
+
+                        @Html.PasswordFor(x => x.u_password, new { @class = "form-control", @placeholder = "Create password" })
+
+                    </div>
+                    <span style="color:red">   @Html.ValidationMessageFor(x => x.u_password) </span>
+
+                </div>
+                <div class="form-group">
+                    <div class="input-group mt-2">
+
+                        @Html.TextBoxFor(x => x.u_contact, new { @class = "form-control", @placeholder = " Enter mobile number" })
+
+                    </div>
+                    <span style="color:red">   @Html.ValidationMessageFor(x => x.u_name) </span>
+
+                </div>
+
+                <div class="form-group">
+                    <div class="input-group mt-2">
+
+                        <input type="file" name="imgfile" class="form-control" required="required"style="border-top-left-radius:5px;border-bottom-right-radius:5px" />
+
+                    </div>
+                </div>                
+                    <div class="form-group mt-3">
+                        <input type="submit" value="Register" class="btn btn-success btn-block" />
+                    </div>                
+                <div class="form-group">
+                    <p style="color:red">@ViewBag.error</p>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<script src="~/Scripts/jquery.validate-vsdoc.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
